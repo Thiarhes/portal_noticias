@@ -1,12 +1,9 @@
-const express = require('express');
-const app = express();
+const app = require('./config/server');
 
-app.get('/', (req, res) => {
-    res.send('<html><body>Portal de Noticias</body></html>');
-});
+const routeNoticias = require('./app/routes/noticias')(app);
 
-app.get('/tecnologia', (req, res) => {
-    res.send('<html><body>Noticias de Tecnologia</body></html>');
-});
+const routeHome = require('./app/routes/home')(app);
+
+const routeFormIncNotic = require('./app/routes/formulario_inclusao_noticia')(app);
 
 app.listen(3000, () => console.log('Server listening on port 3000'));
